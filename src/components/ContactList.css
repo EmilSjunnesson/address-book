@@ -1,0 +1,9 @@
+ul.contact-list {
+  list-style-type: none;
+  width: 100%;
+  padding-left: 0;
+}
+
+ul.contact-list li {
+  margin-bottom: 0.5em;
+}

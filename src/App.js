@@ -1,26 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import 'normalize.css';
 import './App.css';
+import { fetchContacts } from './utils/api';
+import ContactListPage from './pages/ContactListPage';
+import ContactDetailPage from './pages/ContactDetailPage';
 
 class App extends Component {
+  state = {
+    contacts: [],
+    isLoading: false,
+    error: null,
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: true });
+    fetchContacts({})
+      .then((contacts) => this.setState({ isLoading: false, contacts }))
+      .catch((error) => this.setState({ isLoading: false, error }))
+  }
+
+
   render() {
+    const { contacts } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div className="App">
+          {/* TODO COMMON HEADER?, loading spinner, error popup */}
+          <Route exact path="/" render={() => <ContactListPage contacts={contacts} />} />
+          {contacts && contacts.length > 0 && (
+            <Route path="/contacts/:id" render={({ match }) => (
+              <ContactDetailPage contact={contacts.find(c => c.id.value === match.params.id)} />
+            )}/>
+          )}
+        </div>
+      </Router>
     );
   }
 }

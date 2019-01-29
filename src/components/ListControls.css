@@ -1,0 +1,38 @@
+.list-controls {
+  background-color: rgba(214, 61, 13, .9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: white;
+}
+
+.list-controls > div {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 136px;
+}
+
+.list-controls .radios {
+  display: flex;
+}
+
+.list-controls input[type="text"] {
+  margin-top: 1em;
+}
+
+@media only screen and (min-width: 768px) {  /* for desktop */
+  .list-controls > div {
+    flex-direction: row;
+    height: 100px;
+  }
+
+  .list-controls input[type="text"] {
+    margin-top: 0;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}

@@ -1,0 +1,9 @@
+.contact-list-page {
+  margin-top: 146px;
+}
+
+@media only screen and (min-width: 768px) {  /* for desktop */
+  .contact-list-page {
+    margin-top: 116px;
+  }
+}

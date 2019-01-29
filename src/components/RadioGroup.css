@@ -1,0 +1,20 @@
+.radio-group {
+  padding: 0.5em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.radio-group > p {
+  text-align: center;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  font-weight: bold;
+}
+
+.radio-group label {
+  margin-left: 0.5em;
+}
+
+.radio-group input {
+  margin-bottom: 0.5em;
+}
