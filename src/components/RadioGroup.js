@@ -2,7 +2,7 @@ import React from 'react';
 import './RadioGroup.css';
 
 /*
-  Render a group of radio buttons according todo
+  Render a group of radio buttons according to
   the options prop (array of objects with name and value)
 */
 const RadioGroup = ({ title, value, options, onChange }) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import ContactListItem from '../components/ContactListItem';
 import './ContactList.css';
 
-const ContactListPage = ({ contacts }) => {
+const ContactList = ({ contacts }) => {
   return (
     <ul className="contact-list">
       {contacts.map((contact) =>
@@ -12,4 +12,4 @@ const ContactListPage = ({ contacts }) => {
   );
 };
 
-export default ContactListPage;
+export default ContactList;

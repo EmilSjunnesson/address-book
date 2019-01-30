@@ -33,8 +33,8 @@ const ListControls = ({
             title="Direction"
             value={direction}
             options={[
-              { name: 'Ascending', value: 'asc' },
-              { name: 'Descending', value: 'desc' },
+              { name: 'A - Z', value: 'asc' },
+              { name: 'Z - A', value: 'desc' },
             ]}
             onChange={onDirectionChanged}
           />

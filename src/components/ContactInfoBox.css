@@ -1,0 +1,24 @@
+.contact-info-box {
+  background-color: white;
+  padding-bottom: 0.2em;
+}
+
+.contact-info-box h3 {
+  background-color: #d63d0d;
+  color: white;
+  padding: 0.5em;
+  margin: 0;
+  text-align: center;
+}
+
+.contact-info-box a {
+  color: #0098ff;
+  text-decoration: none;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.contact-info-box .icon {
+  vertical-align: middle;
+  margin-right: 0.2em;
+}

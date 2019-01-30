@@ -10,7 +10,7 @@ const ContactListItem = ({ contact }) => {
     <li>
       <Link to={`/contacts/${contact.id.value}`} className="contact-list-link">
         <div className="contact-list-item">
-          <img src={contact.picture.medium} alt="" />
+          <img src={contact.picture.medium} alt={capitalize(contact.name.first)} />
           <div>
             <h2>{capitalize(contact.name.first)} {capitalize(contact.name.last)}</h2>
             <div className="info">

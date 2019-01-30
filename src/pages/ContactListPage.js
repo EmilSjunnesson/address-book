@@ -1,20 +1,31 @@
 import React, { Component } from 'react';
+import qs from 'query-string';
 import ContactList from '../components/ContactList';
 import ListControls from '../components/ListControls';
 import './ContactListPage.css';
 
+/*
+  Sets the inital state (filters) from the page's query params,
+  if param doesn't exist fallback to default value
+*/
+const setInitialState = (props, key, def) => (qs.parse(props.location.search)[key] || def);
+
 class ContactListPage extends Component {
   state = {
-    orderBy: 'firstName',
-    direction: 'asc',
-    query: '',
+    orderBy: setInitialState(this.props, 'orderBy', 'firstName'),
+    direction: setInitialState(this.props, 'direction', 'asc'),
+    query: setInitialState(this.props, 'query', ''),
+  }
+
+  componentDidMount() {
+    document.title = 'Address book';
   }
 
   // Return an arry of contacts filtered by query and sorted by orderBy and direction
   filterContacts = (contacts, orderBy, direction, query) => {
     let output = contacts
     if (query && query.trim().length > 0) {
-      // user query to filter first + last name
+      // use query to filter first + last name
       output = contacts.filter((c) =>
         `${c.name.first} ${c.name.last}`.toLowerCase().includes(query.toLowerCase()));
     }
@@ -27,6 +38,9 @@ class ContactListPage extends Component {
     );
   }
 
+  // update url to reflect state of the page
+  updateUrl = () => this.props.history.replace({ search: qs.stringify(this.state) });
+
   render() {
     const { orderBy, direction, query } = this.state;
     return (
@@ -35,9 +49,9 @@ class ContactListPage extends Component {
           query={query}
           orderBy={orderBy}
           direction={direction}
-          onQueryChanged={query => this.setState({ query })}
-          onOrderByChanged={orderBy => this.setState({ orderBy })}
-          onDirectionChanged={direction => this.setState({ direction })}
+          onQueryChanged={query => this.setState({ query }, this.updateUrl)}
+          onOrderByChanged={orderBy => this.setState({ orderBy }, this.updateUrl)}
+          onDirectionChanged={direction => this.setState({ direction }, this.updateUrl)}
         />
         <ContactList
           contacts={this.filterContacts(this.props.contacts, orderBy, direction, query)}

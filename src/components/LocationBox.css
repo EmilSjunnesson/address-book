@@ -1,0 +1,17 @@
+.location-box {
+  background-color: white;
+  padding-bottom: 0.2em;
+}
+
+.location-box h3 {
+  background-color: #d63d0d;
+  color: white;
+  padding: 0.5em;
+  margin: 0;
+  text-align: center;
+}
+
+.location-box p {
+  margin-left: 1em;
+  margin-right: 1em;
+}
